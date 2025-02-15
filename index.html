@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Tabs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tabs-container">
+        <div class="top-div">
+            <div class="logo-container">
+                <img src="company_logo.png" alt="Logo" class="logo-img">
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'setup-server')">Test Setup</button>
+                <button class="tab-button" onclick="openTab(event, 'Tab2')">Test Run</button>
+                <button class="tab-button" onclick="openTab(event, 'Tab3')">Test Reporting</button>
+            </div>
+        </div>
+        <div class="tab-content-container">
+            <div id="setup-server" class="tab-content active-tab">
+              <div class="form-container">
+                  <form>
+                    <div class="input-group">
+                        <label for="model">Model <span class="required">*</span></label>
+                        <input type="text" id="model" name="model" placeholder="Enter the server model" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="reportname">Report Name</label>
+                        <input type="text" id="reportname" name="reportname" placeholder="Enter your report name">
+                    </div>
+                    <div class="input-group">
+                        <label for="serverip">Server IP <span class="required">*</span></label>
+                        <input type="text" id="ip-address" name="ip-address" class="ip-input" placeholder="Enter IP Address" 
+                        pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" 
+                        title="Enter a valid IP address (e.g., 192.168.1.1)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cpubaseline">CPU Baseline</label>
+                        <input type="number" id="cpubaseline" name="cpubaseline" placeholder="CPU temperature failure threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="membaseline">Memory Baseline</label>
+                        <input type="number" id="membaseline" name="membaseline" placeholder="Memory temperature failure threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="whdbaseline">Write HD Baseline</label>
+                        <input type="number" id="whdbaseline" name="whdbaseline" placeholder="Hard drive write threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="rhdbaseline">Read HD Baseline</label>
+                        <input type="number" id="rhdbaseline" name="rhdbaseline" placeholder="Hard drive read threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="gpuclockbaseline">GPU Clock Baseline</label>
+                        <input type="number" id="gpuclockbaseline" name="gpuclockbaseline" placeholder="GPU clock threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="gputempbaseline">GPU Temperature Baseline</label>
+                        <input type="number" id="gputempbaseline" name="gputempbaseline" placeholder="GPU Temperature threshold. Default: ">
+                    </div>
+                    <div class="input-group">
+                        <label for="fogip">Fog Server IP</label>
+                        <input type="text" id="fogserverip" name="fogserverip" placeholder="FOG server IP">
+                    </div>
+                    <div class="button-container">
+                        <button type="submit">Add/Update Server</button>
+                    </div>
+              </form>
+              </div>
+              <div class="table-container">
+                    <table id="myTable">
+                        <thead>
+                          <tr>
+                            <th>Model</th>
+                            <th>ReportName</th>
+                            <th>IP</th>
+                            <th>CPUBaseline</th>
+                            <th>MemoryBaseline</th>
+                            <th>WriteHDBaseline</th>
+                            <th>ReadHDBaseline</th>
+                            <th>GPUClockBaseline</th>
+                            <th>GPUTempBaseline</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.12</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.11</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.13</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.14</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.15</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td contenteditable="false">x13</td>
+                            <td contenteditable="false"></td>
+                            <td contenteditable="false">192.168.30.16</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">100</td>
+                            <td contenteditable="false">50000</td>
+                            <td contenteditable="false">130000</td>
+                            <td contenteditable="false">1000</td>
+                            <td contenteditable="false">100</td>
+                            <td>
+                              <button class="delete" onclick="deleteRow(this)">Delete</button>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    <div class="button-grouping">
+                      <div class="button-container">
+                        <button type="submit">Clear Configuration</button>
+                      </div>
+                      <div class="button-container">
+                        <button type="submit">Open Config File</button>
+                      </div>
+                      <div class="button-container">
+                        <button type="submit">Load Config File</button>
+                      </div>
+                    </div>
+                      
+                      <script>
+                        
+                        function deleteRow(button) {
+                          const row = button.closest('tr');
+                          row.remove();
+                        }
+                      </script>
+              </div>
+                
+                <div class="action-container">
+                    <label class="rounded-label"></label>
+                    <div class="button-container">
+                      <button type="submit">Get Connected Servers</button>
+                  </div>
+                </div>
+            </div>
+            <div id="Tab2" class="tab-content">
+                <h2>Tab 2 Content</h2>
+                <p>This is the content for Tab 2.</p>
+            </div>
+            <div id="Tab3" class="tab-content">
+                <h2>Tab 3 Content</h2>
+                <p>This is the content for Tab 3.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
