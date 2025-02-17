@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="tabs-container">
-        <div class="top-div">
+    <div class="main-container">
+        <div class="side-navigation-container">
             <div class="logo-container">
                 <img src="company_logo.png" alt="Logo" class="logo-img">
             </div>
             <div class="tabs">
-                <button class="tab-button active" onclick="openTab(event, 'setup-server')">Test Setup</button>
-                <button class="tab-button" onclick="openTab(event, 'Tab2')">Test Run</button>
-                <button class="tab-button" onclick="openTab(event, 'Tab3')">Test Reporting</button>
+                <button class="tab-button active" onclick="openTab(event, 'testsetup')">Test Setup</button>
+                <button class="tab-button" onclick="openTab(event, 'testrun')">Test Run</button>
+                <button class="tab-button" onclick="openTab(event, 'testreport')">Test Reporting</button>
             </div>
         </div>
         <div class="tab-content-container">
-            <div id="setup-server" class="tab-content active-tab">
+            <div id="testsetup" class="tab-content active-tab">
               <div class="form-container">
                   <form>
                     <div class="input-group">
@@ -193,22 +193,99 @@
                         }
                       </script>
               </div>
-                
-                <div class="action-container">
-                    <label class="rounded-label"></label>
-                    <div class="button-container">
-                      <button type="submit">Get Connected Servers</button>
+              <div class="action-container">
+                  <label class="rounded-label"></label>
+                  <div class="button-container">
+                    <button type="submit">Get Connected Servers</button>
+                  </div>
+              </div>
+            </div>
+            <div id="testrun" class="tab-content">
+                <div class="server-table">
+                      <table>
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Server Name</th>
+                                <th>Setup Status</th>
+                                <th>Load Status</th>
+                                <th>Test Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="serverTable">
+                            <tr>
+                                <td><input type="checkbox" class="server-checkbox"></td>
+                                <td>Server 1</td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="server-checkbox"></td>
+                                <td>Server 2</td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="server-checkbox"></td>
+                                <td>Server 3</td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                                <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                            </tr>
+                            <tr>
+                              <td><input type="checkbox" class="server-checkbox"></td>
+                              <td>Server 4</td>
+                              <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                              <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                              <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                          </tr>
+                          <tr>
+                            <td><input type="checkbox" class="server-checkbox"></td>
+                            <td>Server 5</td>
+                            <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                            <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                            <td><button class="status-btn pending" onclick="showLog(this)">Pending</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="test-controls">
+                      <button class="setup-btn" onclick="updateStatus('setup')">Setup Test</button>
+                      <button class="load-btn" onclick="updateStatus('load')">Load Test</button>
+                      <button class="start-btn" onclick="updateStatus('start')">Start Test</button>
+                    </div>
+                    <div class="add-notes">
+                       <button class="addnote-btn" onclick="updateStatus('setup')">Add Note</button>
+                        <input type="text" id="note" name="note" placeholder="Add a note to the test run" required>
+                    </div>
+                </div>
+                <div class="log-container">
+                  <div class="header">
+                    <span class="icon">ℹ️</span> Info Logs
+                  </div>
+                  <div class="info-logs">
+
+                  </div>
+                  <div class="header">
+                    <span class="icon">❌</span> Error Logs
+                  </div>
+                  <div class="error-logs">
+                    
+
                   </div>
                 </div>
+               
             </div>
-            <div id="Tab2" class="tab-content">
-                <h2>Tab 2 Content</h2>
-                <p>This is the content for Tab 2.</p>
+            <div id="testreport" class="tab-content">
+              <h2>Tab 3 Content</h2>
+              <p>This is the content for Tab 3.</p>
             </div>
-            <div id="Tab3" class="tab-content">
-                <h2>Tab 3 Content</h2>
-                <p>This is the content for Tab 3.</p>
+              
+
+                
             </div>
+            
         </div>
     </div>
 
